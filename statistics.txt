@@ -1,0 +1,169 @@
+rush hour adaptive
+
+1. Statistics
+Average waiting time: 7.179058682274651
+Total vehicles:  15990
+Vehicles crossed: 15954
+Throughput: 3.1908 vehicles / second
+Max queue length: 29
+Avg queue length: 2.87565
+
+2. Statistics
+Average waiting time: 7.852123783962955
+Total vehicles:  15828
+Vehicles crossed: 15801
+Throughput: 3.1602 vehicles / second
+Max queue length: 38
+Avg queue length: 3.115875
+
+3. Statistics
+Average waiting time: 9.143893053014155
+Total vehicles:  15930
+Vehicles crossed: 15921
+Throughput: 3.1842 vehicles / second
+Max queue length: 32
+Avg queue length: 3.651525
+
+4. Statistics
+Average waiting time: 8.19581960465667
+Total vehicles:  16085
+Vehicles crossed: 16052
+Throughput: 3.2104 vehicles / second
+Max queue length: 42
+Avg queue length: 3.3014
+
+5. Statistics
+Average waiting time: 7.787095794736814
+Total vehicles:  16059
+Vehicles crossed: 16021
+Throughput: 3.2042 vehicles / second
+Max queue length: 33
+Avg queue length: 3.12675
+
+
+rush hour fixed
+
+1. Statistics
+Average waiting time: 15.414758662402326
+Total vehicles:  15997
+Vehicles crossed: 15942
+Throughput: 3.1884 vehicles / second
+Max queue length: 107
+Avg queue length: 6.18155
+
+2. Statistics
+Average waiting time: 11.174591795093484
+Total vehicles:  16143
+Vehicles crossed: 16106
+Throughput: 3.2212 vehicles / second
+Max queue length: 43
+Avg queue length: 4.525725
+
+3. Statistics
+Average waiting time: 11.451259329979903
+Total vehicles:  16116
+Vehicles crossed: 16088
+Throughput: 3.2176 vehicles / second
+Max queue length: 45
+Avg queue length: 4.6328
+
+4. Statistics
+Average waiting time: 16.426928260402452
+Total vehicles:  15998
+Vehicles crossed: 15958
+Throughput: 3.1916 vehicles / second
+Max queue length: 75
+Avg queue length: 6.587925
+
+5. Statistics
+Average waiting time: 19.186684805061454
+Total vehicles:  15986
+Vehicles crossed: 15939
+Throughput: 3.1878 vehicles / second
+Max queue length: 103
+Avg queue length: 7.68455
+
+
+low traffic adaptive
+
+Statistics
+Average waiting time: 2.9640945677936035
+Total vehicles:  466
+Vehicles crossed: 466
+Throughput: 0.0932 vehicles / second
+Max queue length: 3
+Avg queue length: 0.034725
+
+Statistics
+Average waiting time: 3.0341593214055287
+Total vehicles:  490
+Vehicles crossed: 490
+Throughput: 0.098 vehicles / second
+Max queue length: 3
+Avg queue length: 0.037475
+
+Statistics
+Average waiting time: 2.4848683893736836
+Total vehicles:  463
+Vehicles crossed: 463
+Throughput: 0.0926 vehicles / second
+Max queue length: 2
+Avg queue length: 0.029125
+
+Statistics
+Average waiting time: 3.0013182312212874
+Total vehicles:  481
+Vehicles crossed: 481
+Throughput: 0.0962 vehicles / second
+Max queue length: 3
+Avg queue length: 0.036175
+
+Statistics
+Average waiting time: 3.0618753899523483
+Total vehicles:  481
+Vehicles crossed: 481
+Throughput: 0.0962 vehicles / second
+Max queue length: 2
+Avg queue length: 0.037275
+
+low traffic fixed
+
+Statistics
+Average waiting time: 5.649350485026058
+Total vehicles:  431
+Vehicles crossed: 431
+Throughput: 0.0862 vehicles / second
+Max queue length: 3
+Avg queue length: 0.0639
+
+Statistics
+Average waiting time: 5.247684356456483
+Total vehicles:  494
+Vehicles crossed: 493
+Throughput: 0.0986 vehicles / second
+Max queue length: 3
+Avg queue length: 0.0678
+
+Statistics
+Average waiting time: 5.2921301975516055
+Total vehicles:  446
+Vehicles crossed: 446
+Throughput: 0.0892 vehicles / second
+Max queue length: 3
+Avg queue length: 0.061775
+
+Statistics
+Average waiting time: 5.558044993135945
+Total vehicles:  446
+Vehicles crossed: 446
+Throughput: 0.0892 vehicles / second
+Max queue length: 3
+Avg queue length: 0.064775
+
+Statistics
+Average waiting time: 5.724174245776685
+Total vehicles:  471
+Vehicles crossed: 469
+Throughput: 0.0938 vehicles / second
+Max queue length: 3
+Avg queue length: 0.070675
