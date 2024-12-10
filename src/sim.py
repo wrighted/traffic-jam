@@ -45,7 +45,7 @@ def vehicle_arrival(env, lane, queue, inter_arrival_mean):
         yield env.timeout(random.expovariate(1 / inter_arrival_mean))
         vehicle = Vehicle(lane, random.choices([True, False], weights=[PROB_TURN, 1-PROB_TURN])[0], env.now, vehicle_count)
         vehicle_count += 1
-        print(f"{vehicle} arrives in lane {vehicle.lane} {str(vehicle.direction)} at time {vehicle.arrival_time:.1f}")
+        print_vehicle(vehicle, "Arrival")
         queue.put(vehicle)
 
 
@@ -57,7 +57,7 @@ def traffic_light_controller(env, queues, green_time):
     ]
     while True:
         for direction in directions:
-            print(f"    Green light for {direction} at time {env.now:.1f}")
+            print_light_change(env.now, direction)
             for lane in direction:
                 queues[lane]['green_light'] = True
             yield env.timeout(green_time)
@@ -71,22 +71,26 @@ def vehicle_service(env, lane, queue, queues):
             yield env.timeout(0.001)
 
         vehicle = yield queue.get()
-        print(f"{vehicle} starts crossing {lane} at time {env.now:.1f}")
         
         vehicle.set_start_time(env.now)
-        vehicle.set_service_time()    
+        vehicle.set_service_time()
+        print_vehicle(vehicle, "Start")
+
         currently_crossing[lane].append(vehicle)
         yield env.timeout(vehicle.service_time)
 
-        print(f"{vehicle} finishes crossing {lane} at time {env.now:.1f}")
+        print_vehicle(vehicle, "End")
         currently_crossing[lane] = [v for v in currently_crossing[lane] if v != vehicle]
 
+''' return the direction of the first vehicle in the queue '''
 def first_vehicle_direction(queue):
     return queue.items[0].direction
 
+''' return True if the queue is empty, False otherwise '''
 def queue_empty(queue):
     return len(queue.items) == 0
 
+''' return True if the car can cross the intersection, False otherwise '''
 def can_cross(current_time, lane, queue, queues):
     # check that the light is green
     if not queues[lane]['green_light']:
@@ -138,6 +142,16 @@ def lanes_free_in_intersection(current_time, lanes):
         
     return True
 
+def print_vehicle(vehicle, type):
+    start_time = round(vehicle.start_time, 2) if vehicle.start_time else ''
+    end_time = round(vehicle.start_time + vehicle.service_time, 2) if vehicle.start_time and type == 'End' else ''
+
+    print(f"{vehicle.id:<10} | {type:<10} | {vehicle.arrival_time:<12.2f} | {start_time:<10} | {end_time:<8} | {vehicle.lane:<10} | {vehicle.direction.name:<10}")
+
+def print_light_change(time, lanes):
+    lane = 'E, W' if lanes[0][0] == 'E' else 'N, S'
+    print(f"{'':<10} | {'Green':<10} | {'':<12} | {time:<10.2f} | {'':<8} | {lane:<10} | {'':<10}")
+
 # Main simulation setup
 def main():
     env = simpy.Environment()
@@ -155,6 +169,7 @@ def main():
         env.process(vehicle_arrival(env, lane, queues[lane]['queue'], INTER_ARRIVAL_MEAN))
         env.process(vehicle_service(env, lane, queues[lane]['queue'], queues))
 
+    print(f"{'Vehicle id':<10} | {'Type':<10} | {'Arrival time':<12} | {'Start time':<10} | {'End time':<8} | {'Lane':<10} | {'Direction':<10}")
     # Run the simulation
     env.run(until=SIMULATION_TIME)
 

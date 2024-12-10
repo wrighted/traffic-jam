@@ -19,8 +19,8 @@ class Vehicle:
         self.lane = lane
         self.direction = self.set_direction(lane, turn)
         self.arrival_time = round(arrival_time, 1)
-        self.service_time = 0
-        self.start_time = 0
+        self.service_time = None
+        self.start_time = None
         self.id = id
 
     def __repr__(self):
@@ -47,8 +47,6 @@ class Vehicle:
             continue
 
         self.service_time = service_time
-        print(service_time)
-
 
     def set_start_time(self, start_time):
         self.start_time = start_time
