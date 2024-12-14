@@ -13,7 +13,7 @@ class Vehicle:
     AVG_LEFT_TURN = 2.0 # seconds
     AVG_RIGHT_TURN = 0.7 # seconds
     AVG_STRAIGHT_MOVING = 0.9 # seconds
-    AVG_STRAIGHT_STOPPED = 1.7 # seconds
+    AVG_STRAIGHT_STOPPED = 2.6 # seconds
 
     def __init__(self, lane, turn, arrival_time, id):
         self.lane = lane
@@ -37,7 +37,7 @@ class Vehicle:
             case Direction.RIGHT:
                 return self.AVG_RIGHT_TURN
             case Direction.STRAIGHT:
-                moving = (self.start_time - self.front_time) <= 1.3
+                moving = (self.start_time - self.front_time) <= 1
                 return self.AVG_STRAIGHT_MOVING if moving else self.AVG_STRAIGHT_STOPPED
 
     def set_service_time(self):
@@ -53,8 +53,9 @@ class Vehicle:
     def set_start_time(self, start_time):
         self.start_time = start_time
 
-    def service_half_completed(self, current_time):
-        return (self.start_time + self.service_time) - self.service_time * 0.5  <= current_time
+    # return true if the rest of the service time for the current vehicle is less than 75% of the other vehicle's service time
+    def enough_cross_time(self, current_time, other_service_time):
+        return (self.service_time - (current_time - self.start_time)) < (0.75 * other_service_time)
     
     def set_front_time(self, front_time):
         self.front_time = front_time
