@@ -14,8 +14,6 @@ MIN_GREEN_TIME = 10
 LANES = ['N_Straight', 'N_Left', 'S_Straight', 'S_Left',
          'E_Straight', 'E_Left', 'W_Straight', 'W_Left']
 
-lanes = []
-
 OPPOSING_LANES = {
     'N_Left': ['S_Straight', 'S_Left'],
     'S_Left': ['N_Straight', 'N_Left'],
@@ -27,8 +25,8 @@ OPPOSING_LANES = {
     'W_Straight': ['E_Left'],
 }
 
-AVG_RUSH_HOUR = 1443 # / len(LANES) # cars per hour, based on crd data
-AVG_LOW_TRAFFIC = 42 # / len(LANES) # cars per hour
+AVG_RUSH_HOUR = 1443 / len(LANES) # cars per hour, based on crd data
+AVG_LOW_TRAFFIC = 42 / len(LANES) # cars per hour
 
 INTER_ARRIVAL_MEAN = 3600 / AVG_RUSH_HOUR # seconds
 # INTER_ARRIVAL_MEAN = 3600 / AVG_LOW_TRAFFIC # seconds
@@ -151,7 +149,7 @@ def can_cross(current_time, lane, queue, queues):
 
         if intersection_free:
             vehicle = queue.items[0]
-            vehicle.set_start_time(current_time)
+            vehicle.set_start_time(max(current_time, vehicle.arrival_time))
             vehicle.set_service_time()
 
             # ensure there is enough time to cross before the light changes
