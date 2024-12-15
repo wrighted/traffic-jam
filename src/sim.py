@@ -6,11 +6,11 @@ import sys
 # Constants
 # INTER_ARRIVAL_MEAN = 5  # Mean time between arrivals (seconds)
 # SERVICE_TIME_MEAN = 3   # Mean service time per vehicle (seconds)
-ADAPTIVE = False
+adaptive = False
 
-SIMULATION_TIME = 7200  # Total simulation time (seconds)
-MAX_GREEN_TIME = 30  # Maximum green light duration for each direction (seconds)
-GREEN_LIGHT_TIME = 20  # Green light duration for both directions (seconds)
+SIMULATION_TIME = 1000  # Total simulation time (seconds)
+MAX_GREEN_TIME = 35  # Maximum green light duration for each direction (seconds)
+GREEN_LIGHT_TIME = 25  # Green light duration for both directions (seconds)
 MIN_GREEN_TIME = 10
 LANES = ['N_Straight', 'N_Left', 'S_Straight', 'S_Left',
          'E_Straight', 'E_Left', 'W_Straight', 'W_Left']
@@ -26,16 +26,17 @@ OPPOSING_LANES = {
     'W_Straight': ['E_Left'],
 }
 
-AVG_RUSH_HOUR = 1443 / len(LANES) # cars per hour, based on crd data
-AVG_LOW_TRAFFIC = 42 / len(LANES) # cars per hour
+AVG_RUSH_HOUR = 3000 / len(LANES) # cars per hour
+AVG_LOW_TRAFFIC = 300 / len(LANES) # cars per hour
 
-# INTER_ARRIVAL_MEAN = 3600 / AVG_RUSH_HOUR # seconds
-INTER_ARRIVAL_MEAN = 3600 / AVG_LOW_TRAFFIC # seconds
+INTER_ARRIVAL_MEAN = 3600 / AVG_RUSH_HOUR # seconds
+# INTER_ARRIVAL_MEAN = 3600 / AVG_LOW_TRAFFIC # seconds
 
 PROB_TURN = 0.1
 vehicle_count = 0
 currently_crossing = {lane: [] for lane in LANES}
 queue_lengths = {lane: [] for lane in LANES}
+queue_avg = []
 all_vehicles = []
 next_green = GREEN_LIGHT_TIME
 
@@ -74,12 +75,12 @@ def traffic_light_controller(env, queues, green_time):
             for lane in direction:
                 queues[lane]['green_light'] = True
             
-            if ADAPTIVE:
+            if adaptive:
                 queue_ns, queue_ew = sum_queues(directions)
 
-                if (direction == directions[0] and queue_ns > 60) or (direction == directions[1] and queue_ew > 60):
+                if (direction == directions[0] and queue_ns > 20) or (direction == directions[1] and queue_ew > 20):
                     green_time = MAX_GREEN_TIME
-                elif (direction == directions[0] and queue_ns < 30) or (direction == directions[1] and queue_ew < 30):
+                elif (direction == directions[0] and queue_ns < 10) or (direction == directions[1] and queue_ew < 10):
                     green_time = MIN_GREEN_TIME
                 else:
                     green_time = GREEN_LIGHT_TIME
@@ -146,11 +147,11 @@ def can_cross(current_time, lane, queue, queues):
         # check for each direction
         match (first_vehicle_direction(queue)):
             case Direction.LEFT:
-                intersection_free = can_cross_left(current_time, lane, queues, vehicle.service_time)
+                intersection_free = can_cross_left(current_time, lane, queues)
             case Direction.STRAIGHT:
-                intersection_free = can_cross_straight(current_time, lane, vehicle.service_time)
+                intersection_free = can_cross_straight(current_time, lane)
             case Direction.RIGHT:
-                intersection_free = can_cross_right(current_time, lane, vehicle.service_time)
+                intersection_free = can_cross_right(current_time, lane)
 
         if intersection_free and vehicle.service_time > next_green:
             # ensure there is enough time to cross before the light changes
@@ -161,10 +162,10 @@ def can_cross(current_time, lane, queue, queues):
         return False
 
 ''' return True if the car can turn left, False otherwise '''
-def can_cross_left(current_time, lane, queues, service_time):
+def can_cross_left(current_time, lane, queues):
     opp_1, opp_2 = OPPOSING_LANES[lane]
     # check if the current and opposing lanes in intersection are free
-    if lanes_free_in_intersection(current_time, service_time, {opp_1: [Direction.STRAIGHT], opp_2: [Direction.STRAIGHT], lane: [Direction.LEFT, Direction.STRAIGHT]}):
+    if lanes_free_in_intersection(current_time, {opp_1: [Direction.STRAIGHT], opp_2: [Direction.STRAIGHT], lane: [Direction.LEFT, Direction.STRAIGHT]}):
         opp_1_queue = queues[opp_1]['queue']
         opp_2_queue = queues[opp_2]['queue']
 
@@ -183,23 +184,23 @@ def can_cross_left(current_time, lane, queues, service_time):
 
 
 ''' return True if the car can go straight, False otherwise '''
-def can_cross_straight(current_time, lane, service_time):
+def can_cross_straight(current_time, lane):
     # check if the current and opposing lanes in intersection are free
-    return lanes_free_in_intersection(current_time, service_time, {OPPOSING_LANES[lane][0]: [Direction.LEFT], lane: [Direction.LEFT, Direction.STRAIGHT, Direction.RIGHT]})
+    return lanes_free_in_intersection(current_time, {OPPOSING_LANES[lane][0]: [Direction.LEFT], lane: [Direction.LEFT, Direction.STRAIGHT, Direction.RIGHT]})
 
 
 ''' return True if the car can turn right, False otherwise '''
-def can_cross_right(current_time, lane, service_time):
-    return lanes_free_in_intersection(current_time, service_time, {lane: [Direction.STRAIGHT, Direction.RIGHT]})
+def can_cross_right(current_time, lane):
+    return lanes_free_in_intersection(current_time, {lane: [Direction.STRAIGHT, Direction.RIGHT]})
 
 
 ''' check if the lane has any cars going in the specified direction
 that have not completed half their service time '''
-def lanes_free_in_intersection(current_time, service_time, lanes):
+def lanes_free_in_intersection(current_time, lanes):
     for lane, direction in lanes.items():
         # check that all cars in the specified direction have completed half their service time
         for vehicle in currently_crossing[lane]:
-            if vehicle.direction in direction and not vehicle.enough_cross_time(current_time, service_time):
+            if vehicle.direction in direction and not vehicle.service_almost_complete(current_time):
                 return False
         
     return True
@@ -246,12 +247,12 @@ def main():
         env.process(vehicle_service(env, lane, queues[lane]['queue'], queues))
         env.process(update_queue_lengths(env, queues))
 
-    print(f"{'Vehicle id':<10} | {'Type':<10} | {'Arrival time':<12} | {'Start time':<10} | {'End time':<8} | {'Lane':<10} | {'Direction':<10}")
+    # print(f"{'Vehicle id':<10} | {'Type':<10} | {'Arrival time':<12} | {'Start time':<10} | {'End time':<8} | {'Lane':<10} | {'Direction':<10}")
     # Run the simulation
     env.run(until=SIMULATION_TIME)
 
     # Print statistics
-    print("\nStatistics")
+    print("Statistics")
 
     waiting_times = [(vehicle.start_time if vehicle.start_time is not None else SIMULATION_TIME) - vehicle.arrival_time for vehicle in all_vehicles]
     vehicles_crossed = len(list(filter(lambda x: x.start_time is not None, all_vehicles)))
@@ -263,10 +264,11 @@ def main():
     print(f"Max queue length: {max([max(queue_lengths[lane]) for lane in LANES])}")
     print(f"Avg queue length: {sum([sum(queue_lengths[lane]) for lane in LANES]) / sum(len(queue_lengths[lane]) for lane in LANES)}")
     max_possible_flow = len(all_vehicles) / SIMULATION_TIME
-    print(f"Traffic flow efficiency: {throughput / max_possible_flow * 100}%")
+    print(f"Traffic flow efficiency: {throughput / max_possible_flow * 100}%\n")
 
 if __name__ == "__main__":
     seed = sys.argv[1]
+    adaptive = False if sys.argv[2] == 'False' else True
     print(f'Seed: {seed}')
     random.seed(seed)
     main()

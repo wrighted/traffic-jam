@@ -10,10 +10,10 @@ class Direction(Enum):
         return f'going {self.name.lower()}'
 
 class Vehicle:
-    AVG_LEFT_TURN = 2.0 # seconds
-    AVG_RIGHT_TURN = 0.7 # seconds
-    AVG_STRAIGHT_MOVING = 0.9 # seconds
-    AVG_STRAIGHT_STOPPED = 2.6 # seconds
+    AVG_LEFT_TURN = 3.5 # seconds
+    AVG_RIGHT_TURN = 2.5 # seconds
+    AVG_STRAIGHT_MOVING = 2.5 # seconds
+    AVG_STRAIGHT_STOPPED = 4.5 # seconds
 
     def __init__(self, lane, turn, arrival_time, id):
         self.lane = lane
@@ -53,9 +53,9 @@ class Vehicle:
     def set_start_time(self, start_time):
         self.start_time = start_time
 
-    # return true if the rest of the service time for the current vehicle is less than 75% of the other vehicle's service time
-    def enough_cross_time(self, current_time, other_service_time):
-        return (self.service_time - (current_time - self.start_time)) < (0.75 * other_service_time)
+    # check if the vehicle has completed 90% of its service time
+    def service_almost_complete(self, current_time):
+        return (current_time - self.start_time) >= (0.9 * self.service_time)
     
     def set_front_time(self, front_time):
         self.front_time = front_time

@@ -1,209 +1,208 @@
-rush hour adaptive
+adaptive rush hour
 
 Seed: 1
 Statistics
-Average waiting time: 2.9607235134370073
-Total vehicles:  2822
-Vehicles crossed: 2820
-Throughput: 0.39166666666666666 vehicles / second
+Average waiting time: 13.719459113434237
+Total vehicles:  6018
+Vehicles crossed: 6016
+Throughput: 0.8355555555555556 vehicles / second
+Max queue length: 19
+Avg queue length: 1.4374479166666667
+Traffic flow efficiency: 99.96676636756399%
+
+Seed: 2
+Statistics
+Average waiting time: 12.438951561076294
+Total vehicles:  6051
+Vehicles crossed: 6043
+Throughput: 0.8393055555555555 vehicles / second
+Max queue length: 15
+Avg queue length: 1.31125
+Traffic flow efficiency: 99.86779044785985%
+
+Seed: 3
+Statistics
+Average waiting time: 13.11176322426416
+Total vehicles:  5985
+Vehicles crossed: 5969
+Throughput: 0.8290277777777778 vehicles / second
+Max queue length: 19
+Avg queue length: 1.3660416666666666
+Traffic flow efficiency: 99.73266499582289%
+
+Seed: 4
+Statistics
+Average waiting time: 13.462526589111375
+Total vehicles:  6071
+Vehicles crossed: 6062
+Throughput: 0.8419444444444445 vehicles / second
+Max queue length: 17
+Avg queue length: 1.4186805555555555
+Traffic flow efficiency: 99.85175424147587%
+
+Seed: 5
+Statistics
+Average waiting time: 13.237831297423316
+Total vehicles:  6017
+Vehicles crossed: 6006
+Throughput: 0.8341666666666666 vehicles / second
+Max queue length: 15
+Avg queue length: 1.384704861111111
+Traffic flow efficiency: 99.81718464351005%
+
+fixed rush hour
+
+Seed: 1
+Statistics
+Average waiting time: 16.51300262072769
+Total vehicles:  6082
+Vehicles crossed: 6064
+Throughput: 0.8422222222222222 vehicles / second
+Max queue length: 24
+Avg queue length: 1.7621527777777777
+Traffic flow efficiency: 99.70404472213087%
+
+Seed: 2
+Statistics
+Average waiting time: 16.803564338766574
+Total vehicles:  6044
+Vehicles crossed: 6032
+Throughput: 0.8377777777777777 vehicles / second
+Max queue length: 26
+Avg queue length: 1.78234375
+Traffic flow efficiency: 99.80145598941098%
+
+Seed: 3
+Statistics
+Average waiting time: 14.733399280507506
+Total vehicles:  6038
+Vehicles crossed: 6019
+Throughput: 0.8359722222222222 vehicles / second
+Max queue length: 23
+Avg queue length: 1.5647048611111112
+Traffic flow efficiency: 99.68532626697582%
+
+Seed: 4
+Statistics
+Average waiting time: 13.934024132520573
+Total vehicles:  6088
+Vehicles crossed: 6078
+Throughput: 0.8441666666666666 vehicles / second
+Max queue length: 16
+Avg queue length: 1.49375
+Traffic flow efficiency: 99.83574244415243%
+
+Seed: 5
+Statistics
+Average waiting time: 16.38850497630633
+Total vehicles:  5992
+Vehicles crossed: 5983
+Throughput: 0.8309722222222222 vehicles / second
+Max queue length: 21
+Avg queue length: 1.7246354166666666
+Traffic flow efficiency: 99.8497997329773%
+
+
+adaptive low traffic 
+
+Seed: 1
+Statistics
+Average waiting time: 3.818590322629441
+Total vehicles:  644
+Vehicles crossed: 643
+Throughput: 0.08930555555555555 vehicles / second
+Max queue length: 2
+Avg queue length: 0.043159722222222224
+Traffic flow efficiency: 99.84472049689441%
+
+Seed: 2
+Statistics
+Average waiting time: 3.9001605122315506
+Total vehicles:  624
+Vehicles crossed: 623
+Throughput: 0.08652777777777777 vehicles / second
+Max queue length: 2
+Avg queue length: 0.042638888888888886
+Traffic flow efficiency: 99.83974358974358%
+
+Seed: 3
+Statistics
+Average waiting time: 4.002940647920512
+Total vehicles:  587
+Vehicles crossed: 586
+Throughput: 0.08138888888888889 vehicles / second
+Max queue length: 3
+Avg queue length: 0.04116319444444445
+Traffic flow efficiency: 99.82964224872231%
+
+Seed: 4
+Statistics
+Average waiting time: 3.831223203977674
+Total vehicles:  628
+Vehicles crossed: 627
+Throughput: 0.08708333333333333 vehicles / second
+Max queue length: 3
+Avg queue length: 0.04185763888888889
+Traffic flow efficiency: 99.84076433121018%
+
+Seed: 5
+Statistics
+Average waiting time: 3.889827992234423
+Total vehicles:  592
+Vehicles crossed: 591
+Throughput: 0.08208333333333333 vehicles / second
+Max queue length: 2
+Avg queue length: 0.04003472222222222
+Traffic flow efficiency: 99.83108108108108%
+
+fixed low traffic
+
+Seed: 1
+Statistics
+Average waiting time: 7.21123196771707
+Total vehicles:  587
+Vehicles crossed: 587
+Throughput: 0.08152777777777778 vehicles / second
+Max queue length: 3
+Avg queue length: 0.07611111111111112
+Traffic flow efficiency: 100.0%
+
+Seed: 2
+Statistics
+Average waiting time: 6.905196039581106
+Total vehicles:  618
+Vehicles crossed: 618
+Throughput: 0.08583333333333333 vehicles / second
 Max queue length: 4
-Avg queue length: 0.14647569444444444
-Traffic flow efficiency: 99.93%
+Avg queue length: 0.07642361111111111
+Traffic flow efficiency: 100.0%
 
-Seed: 2
+Seed: 3
 Statistics
-Average waiting time: 2.831258838129577
-Total vehicles:  2858
-Vehicles crossed: 2857
-Throughput: 0.3968055555555556 vehicles / second
+Average waiting time: 8.222844329471279
+Total vehicles:  590
+Vehicles crossed: 590
+Throughput: 0.08194444444444444 vehicles / second
+Max queue length: 2
+Avg queue length: 0.08690972222222222
+Traffic flow efficiency: 100.0%
+
+Seed: 4
+Statistics
+Average waiting time: 7.361130698640533
+Total vehicles:  598
+Vehicles crossed: 598
+Throughput: 0.08305555555555555 vehicles / second
 Max queue length: 4
-Avg queue length: 0.14159722222222224
-Traffic flow efficiency: 99.97%
-
-Seed: 3
-Statistics
-Average waiting time: 3.00050418326624
-Total vehicles:  2935
-Vehicles crossed: 2932
-Throughput: 0.4072222222222222 vehicles / second
-Max queue length: 6
-Avg queue length: 0.15361111111111111
-Traffic flow efficiency: 99.90%
-
-Seed: 4
-Statistics
-Average waiting time: 3.1320162374566003
-Total vehicles:  2944
-Vehicles crossed: 2942
-Throughput: 0.4086111111111111 vehicles / second
-Max queue length: 5
-Avg queue length: 0.1607986111111111
-Traffic flow efficiency: 99.93%
-
-Seed: 5
-Statistics
-Average waiting time: 3.0448138333865713
-Total vehicles:  2859
-Vehicles crossed: 2858
-Throughput: 0.39694444444444443 vehicles / second
-Max queue length: 5
-Avg queue length: 0.15182291666666667
-Traffic flow efficiency: 99.97%
-
-rush hour fixed
-
-Seed: 1
-Statistics
-Average waiting time: 5.541572933764395
-Total vehicles:  2890
-Vehicles crossed: 2885
-Throughput: 0.40069444444444446 vehicles / second
-Max queue length: 6
-Avg queue length: 0.28953125
-Traffic flow efficiency: 99.83%
-
-Seed: 2
-Statistics
-Average waiting time: 5.184980605114919
-Total vehicles:  2849
-Vehicles crossed: 2845
-Throughput: 0.3951388888888889 vehicles / second
-Max queue length: 5
-Avg queue length: 0.2680034722222222
-Traffic flow efficiency: 99.86%
-
-Seed: 3
-Statistics
-Average waiting time: 5.46292841613702
-Total vehicles:  2895
-Vehicles crossed: 2891
-Throughput: 0.40152777777777776 vehicles / second
-Max queue length: 5
-Avg queue length: 0.28661458333333334
-Traffic flow efficiency: 99.86%
-
-Seed: 4
-Statistics
-Average waiting time: 5.327235666252238
-Total vehicles:  2944
-Vehicles crossed: 2940
-Throughput: 0.4083333333333333 vehicles / second
-Max queue length: 6
-Avg queue length: 0.28447916666666667
-Traffic flow efficiency: 99.86%
-
-Seed: 5
-Statistics
-Average waiting time: 5.539921903949466
-Total vehicles:  2871
-Vehicles crossed: 2871
-Throughput: 0.39875 vehicles / second
-Max queue length: 6
-Avg queue length: 0.2878125
-Traffic flow efficiency: 100.0%
-
-
-low traffic adaptive
-
-Seed: 1
-Statistics
-Average waiting time: 3.1707965627394374
-Total vehicles:  108
-Vehicles crossed: 108
-Throughput: 0.015 vehicles / second
-Max queue length: 2
-Avg queue length: 0.006006944444444444
-Traffic flow efficiency: 100.0%
-
-Seed: 2
-Statistics
-Average waiting time: 2.733896837770762
-Total vehicles:  87
-Vehicles crossed: 87
-Throughput: 0.012083333333333333 vehicles / second
-Max queue length: 1
-Avg queue length: 0.004114583333333333
-Traffic flow efficiency: 100.0%
-
-Seed: 3
-Statistics
-Average waiting time: 2.742185425936196
-Total vehicles:  81
-Vehicles crossed: 81
-Throughput: 0.01125 vehicles / second
-Max queue length: 1
-Avg queue length: 0.0039409722222222224
-Traffic flow efficiency: 100.0%
-
-Seed: 4
-Statistics
-Average waiting time: 3.3492127917547863
-Total vehicles:  80
-Vehicles crossed: 80
-Throughput: 0.011111111111111112 vehicles / second
-Max queue length: 1
-Avg queue length: 0.004652777777777777
+Avg queue length: 0.07894097222222222
 Traffic flow efficiency: 100.0%
 
 Seed: 5
 Statistics
-Average waiting time: 3.8103100942591457
-Total vehicles:  71
-Vehicles crossed: 71
-Throughput: 0.00986111111111111 vehicles / second
-Max queue length: 2
-Avg queue length: 0.0048090277777777775
-Traffic flow efficiency: 100.0%
-
-
-low traffic fixed
-
-Seed: 1
-Statistics
-Average waiting time: 4.9531810470059225
-Total vehicles:  94
-Vehicles crossed: 93
-Throughput: 0.012916666666666667 vehicles / second
-Max queue length: 1
-Avg queue length: 0.008385416666666666
-Traffic flow efficiency: 98.94%
-
-Seed: 2
-Statistics
-Average waiting time: 4.710256694381521
-Total vehicles:  78
-Vehicles crossed: 78
-Throughput: 0.010833333333333334 vehicles / second
-Max queue length: 1
-Avg queue length: 0.006753472222222222
-Traffic flow efficiency: 100.0%
-
-Seed: 3
-Statistics
-Average waiting time: 4.341746879603185
-Total vehicles:  75
-Vehicles crossed: 75
-Throughput: 0.010416666666666666 vehicles / second
-Max queue length: 2
-Avg queue length: 0.005920138888888889
-Traffic flow efficiency: 100.0%
-
-Seed: 4
-Statistics
-Average waiting time: 6.259975230555986
-Total vehicles:  80
-Vehicles crossed: 80
-Throughput: 0.011111111111111112 vehicles / second
-Max queue length: 2
-Avg queue length: 0.009097222222222222
-Traffic flow efficiency: 100.0%
-
-Seed: 5
-Statistics
-Average waiting time: 5.232080287906131
-Total vehicles:  75
-Vehicles crossed: 75
-Throughput: 0.010416666666666666 vehicles / second
-Max queue length: 2
-Avg queue length: 0.007170138888888889
-Traffic flow efficiency: 100.0%
+Average waiting time: 7.946638806464116
+Total vehicles:  628
+Vehicles crossed: 626
+Throughput: 0.08694444444444445 vehicles / second
+Max queue length: 3
+Avg queue length: 0.08944444444444444
+Traffic flow efficiency: 99.68152866242038%
